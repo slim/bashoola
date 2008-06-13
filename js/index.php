@@ -15,23 +15,23 @@ function search_bashoola(){
   this.help = "execute bash commands";
 
   this.call = function(args){
-   var serviceUrl = "<?php echo $service->url; ?>";
    this.start = 0;
    
-   ajaxquery(serviceUrl+"?c="+args.join("+"));
+   this.query(args.join(" "));
   }
 
-  this.next = function(){
+  this.query = function(A) {
+    var serviceUrl = "<?php echo $service->url; ?>";
+	ajaxquery(serviceUrl+"?&callback=searchers_"+this.name+".render&c="+encodeURIComponent(A));
   }
 
-  this.render = function(context, results, status, details, unused){
-      if(results && results.results != "") this.hasmore = true;
-     else this.hasmore = false;
-
-
-    this.renderResult(context, results, status, details, unused);
+  this.render = function(context, results){
+  	if (iscontext(context)) {
+  		output.innerHTML+=results;
+		input.style.display="block";
+		focusinput();
+		window.scrollBy(0,122500)
+	}
   }
-
-
 }
-register_searcher("bashoola","web");
+register_searcher("bashoola");
