@@ -1,0 +1,19 @@
+=== BASHOOLA a bash extension for http://goosh.org ===
+
+== PREREQUISTE
+* a public web server with PHP5 and BASH
+
+== INSTALL
+1- download http://github.com/slim/bashoola/tarball/master
+2- untar somewhere in your DocumentRoot
+3- chmod 777 the newly created /bashoola directory
+4- in goosh load the extension like this : 
+
+"load http://yourserver.com/bashoola/js/"
+
+5- now you have a new command in goosh you can use like this :
+
+"bash ls -l"
+
+== SECURITY
+don't use this software.
